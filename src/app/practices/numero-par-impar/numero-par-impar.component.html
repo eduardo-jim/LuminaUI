@@ -1,0 +1,22 @@
+<div>
+  <h2>Verifica si un número es par o impar</h2>
+  <br />
+  <mat-form-field>
+    <mat-label>Ingresa un número</mat-label>
+    <input
+      matInput
+      (keyup)="onKeyPress($event.target)"
+      #numeroInput
+      type="number"
+    />
+  </mat-form-field>
+  <div *ngIf="resultado !== null">
+    <p>
+      El número {{ numeroInput?.value }} es <strong>{{ resultado }}</strong
+      >.
+    </p>
+  </div>
+  <div>
+    <mat-checkbox>Check me!</mat-checkbox>
+  </div>
+</div>

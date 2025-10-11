@@ -1,0 +1,23 @@
+mat-checkbox {
+  .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background,
+  .mdc-checkbox__native-control:enabled:indeterminate
+    ~ .mdc-checkbox__background {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+  }
+  .mdc-checkbox__checkmark {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 180ms cubic-bezier(0.4, 0, 0.6, 1);
+    color: var(--text-color);
+  }
+  .mdc-checkbox__native-control:focus:focus:checked~.mdc-checkbox__background, .mdc-checkbox__native-control:focus:focus:indeterminate~.mdc-checkbox__background {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+}
+}

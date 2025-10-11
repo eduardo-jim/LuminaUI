@@ -1,0 +1,46 @@
+<nav class="navbar">
+  <div class="logo">
+    <img [src]="logo" alt="Logo" class="logo-img" />
+    <span class="logo-text">{{ logoText }}</span>
+  </div>
+
+  <div class="hamburger" (click)="toggleMenu()">&#9776;</div>
+
+  <ul class="nav-links" [class.open]="isMenuOpen">
+    <li *ngFor="let item of menuItems" class="nav-item">
+      <!-- Padre sin submenú -->
+      <a
+        *ngIf="!item.submenu"
+        [routerLink]="item.path"
+        (click)="selectMenu(item)"
+        [class.active]="item.isActive"
+      >
+        {{ item.label }}
+      </a>
+
+      <!-- Padre con submenú -->
+      <ng-container *ngIf="item.submenu">
+        <a (click)="selectMenu(item)" [class.active]="item.isActive">
+          {{ item.label }} <span>&#9662;</span>
+        </a>
+        <ul class="submenu" [class.open]="item.isOpen">
+          <li *ngFor="let sub of item.submenu">
+            <a
+              [routerLink]="sub.path"
+              (click)="selectMenu(sub, item)"
+              [class.active]="sub.isActive"
+            >
+              {{ sub.label }}
+            </a>
+          </li>
+        </ul>
+      </ng-container>
+    </li>
+    <li class="profile">
+      <div style="padding: 5px; font-weight: bold;">
+        <mat-slide-toggle (change)="changeTheme($event.checked ? 'dark' : 'light')">Modo oscuro</mat-slide-toggle>
+      </div>
+      <button class="btn primary">Cerrar sesión</button>
+    </li>
+  </ul>
+</nav>

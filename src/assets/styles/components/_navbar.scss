@@ -1,0 +1,138 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.navbar {
+
+  @include flex-center;
+  justify-content: flex-start;
+  background-color: var(--navbar-bg-color);
+  padding: 20px;
+  height: 60px;
+
+  position: relative;
+  border-bottom: 1px solid var(--primary-color);
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; // espacio entre la imagen y el texto
+    font-weight: bold;
+    font-size: 1.5rem;
+
+    .logo-img {
+      height: 40px; // ajusta según necesites
+      width: auto; // mantiene proporción
+    }
+
+    .logo-text {
+      color: var(--text-logo-color);
+    }
+  }
+
+  /* Botón hamburguesa (solo visible en móvil) */
+  .hamburger {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  /* Menú principal */
+  .nav-links {
+    flex: 1;
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+
+    .profile {
+      margin-left: auto; // empuja el botón al final
+      display: flex;
+      align-items: center;
+    }
+
+    /* Cada item del menú */
+    .nav-item {
+      position: relative;
+
+      a {
+        cursor: pointer;
+        color: var(--text-color-nav-bar);
+        text-decoration: none;
+        padding: 5px 10px;
+        font-size: 1.1em;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        &:hover {
+          //border-bottom: 1px solid var(--primary-color);
+        }
+
+        &.active {
+          //border-bottom: 1px solid darken(#c2dcf5, 10%);
+        }
+      }
+
+      /* Submenú */
+      .submenu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--nav-bar-submenu-bg-color);
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+        li a {
+          display: block;
+          padding: 10px;
+          white-space: nowrap;
+          font-size: 0.9em;
+          color: var(--text-color-nav-bar-submenu);
+         
+          &:hover {
+            background-color: #f4f4f4;
+          }
+        }
+
+        &.open {
+          display: block;
+        }
+      }
+
+      &:hover .submenu {
+        display: block;
+      }
+    }
+
+    /* Responsive: móvil */
+    @media (max-width: 768px) {
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: var(--primary-color);
+      display: none;
+
+      &.open {
+        display: flex;
+      }
+
+      .nav-item {
+        .submenu {
+          position: relative;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+@use "colors";
+@use "spacing";
+
+.btn {
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 40px;
+  font-family: var(--font-regular);
+}
+
+.btn.primary {
+  background-color: var(--primary-color);
+  color: #fff;
+  border:  1px solid var(--text-color);
+}
