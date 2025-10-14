@@ -7,13 +7,8 @@
 @use 'components/mat-checkbox' as *;
 @use 'components/slide-toggle' as *;
 
-
-// Custom Theming for Angular Material
-// Para más información: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
 @use 'sass:map';
-
-@include mat.core();
 
 // Paleta para tema claro
 $my-primary-palette-light: map.merge(
@@ -24,15 +19,13 @@ $my-primary-palette-light: map.merge(
   )
 );
 
-
 $app-theme-light: mat.define-theme((
   color: (
-   primary: $my-primary-palette-light,
-   tertiary: mat.$blue-palette
+    primary: $my-primary-palette-light,
+    tertiary: mat.$blue-palette
   ),
   density: (scale: 0)
 ));
-
 
 // Paleta para tema oscuro
 $my-primary-palette-dark: map.merge(
@@ -52,23 +45,19 @@ $app-theme-dark: mat.define-theme((
   density: (scale: 0)
 ));
 
-
-
-// Aplica los temas de Angular Material y las variables CSS
+// Aplica el tema claro por defecto al body (solo una vez)
+body,
 .theme-light {
-
+  @include mat.core-theme($app-theme-light);
   @include mat.all-component-themes($app-theme-light);
-  // Las variables CSS ya se exponen en _variables.scss
 }
 
+// Solo los estilos de color para el tema oscuro
 .theme-dark {
-  @include mat.all-component-themes($app-theme-dark);
-  // Las variables CSS ya se exponen en _variables.scss
+  @include mat.all-component-colors($app-theme-dark);
 }
 
-
-.content{
-    padding: 20px;
-    background-color: var(--background-color);
+.content {
+  padding: 20px;
+  background-color: var(--background-color);
 }
-
