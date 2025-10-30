@@ -37,10 +37,10 @@
       </ng-container>
     </li>
     <li class="profile">
-      <div style="padding: 5px; font-weight: bold;">
+      <div class="container-toogle">
         <mat-slide-toggle (change)="changeTheme($event.checked ? 'dark' : 'light')">Modo oscuro</mat-slide-toggle>
       </div>
-      <button class="btn primary">Cerrar sesión</button>
+      <button class="btn primary close-sesion">Cerrar sesión</button>
     </li>
   </ul>
 </nav>
