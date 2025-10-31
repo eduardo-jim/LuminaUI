@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-numero-par-impar',
   templateUrl: './numero-par-impar.component.html',
