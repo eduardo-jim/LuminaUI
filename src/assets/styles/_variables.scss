@@ -2,9 +2,23 @@
 @use "themes/navbar-theme" as *;
 
 :root {
-  --font-regular: "recoletaalt-regular", sans-serif;
-  --font-medium: "recoletaalt-medium", sans-serif;
-  --font-bold: "recoletaalt-bold", sans-serif;
+
+  /* Poppins family (defined in assets/fonts/_font.scss) */
+  /* Each variable references the Poppins family; choose the weight via font-weight */
+  --font-poppins-thin: "Poppins", sans-serif;         /* 100 */
+  --font-poppins-extralight: "Poppins", sans-serif;   /* 200 */
+  --font-poppins-light: "Poppins", sans-serif;        /* 300 */
+  --font-poppins-regular: "Poppins", sans-serif;      /* 400 */
+  --font-poppins-medium: "Poppins", sans-serif;       /* 500 */
+  --font-poppins-semibold: "Poppins", sans-serif;     /* 600 */
+  --font-poppins-bold: "Poppins", sans-serif;         /* 700 */
+  --font-poppins-extrabold: "Poppins", sans-serif;    /* 800 */
+  --font-poppins-black: "Poppins", sans-serif;        /* 900 */
+
+  /* Helpful aliases */
+  --font-sans: var(--font-poppins-regular), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-heading: var(--font-regular);
+  --font-body: var(--font-sans);
 }
 
 // Definir temas con clases

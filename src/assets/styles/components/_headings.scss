@@ -1,0 +1,42 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-color);
+
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-poppins-extrabold);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    font-family: var( --font-poppins-black);
+}
+
+h3 {
+    font-family: var( --font-poppins-bold);
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+h4 {
+    font-family: var(--font-poppins-semibold);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+h5 {
+    font-family: var(--font-poppins-medium);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+h6 {
+    font-family: var(--font-poppins-regular);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}

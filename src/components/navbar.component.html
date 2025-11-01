@@ -7,38 +7,39 @@
   <div class="hamburger" (click)="toggleMenu()">&#9776;</div>
 
   <ul class="nav-links" [class.open]="isMenuOpen">
-    <li *ngFor="let item of menuItems" class="nav-item">
+    <li *ngFor="let item of menuItems; let i = index" class="nav-item">
       <!-- Padre sin submenú -->
-      <a
-        *ngIf="!item.submenu"
-        [routerLink]="item.path"
-        (click)="selectMenu(item)"
-        [class.active]="item.isActive"
-      >
+      <a *ngIf="!item.submenu" [routerLink]="item.path" (click)="selectMenu(item)" [class.active]="item.isActive">
         {{ item.label }}
       </a>
 
       <!-- Padre con submenú -->
       <ng-container *ngIf="item.submenu">
-        <a (click)="selectMenu(item)" [class.active]="item.isActive">
-          {{ item.label }} <span>&#9662;</span>
+        <!-- botón accesible para togglear el dropdown -->
+        <a class="nav-trigger" href="" role="button" tabindex="0" aria-haspopup="true"
+          [attr.aria-expanded]="item.isOpen ? 'true' : 'false'" [attr.aria-controls]="'submenu-'+i"
+          (click)="toggleSubmenu(i, $event)" (keydown)="onTriggerKeydown($event, i)">
+          {{ item.label }}
+          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" />
+          </svg>
         </a>
-        <ul class="submenu" [class.open]="item.isOpen">
+
+        <ul class="submenu" role="menu" [id]="'submenu-'+i" [class.open]="item.isOpen">
           <li *ngFor="let sub of item.submenu">
-            <a
-              [routerLink]="sub.path"
-              (click)="selectMenu(sub, item)"
-              [class.active]="sub.isActive"
-            >
+            <a role="menuitem" [routerLink]="sub.path" (click)="selectMenu(sub, item)" [class.active]="sub.isActive">
               {{ sub.label }}
             </a>
           </li>
         </ul>
       </ng-container>
     </li>
+
     <li class="profile">
       <div class="container-toogle">
-        <mat-slide-toggle (change)="changeTheme($event.checked ? 'dark' : 'light')">Modo oscuro</mat-slide-toggle>
+        <mat-slide-toggle (change)="changeTheme($event.checked ? 'dark' : 'light')">
+          Modo oscuro
+        </mat-slide-toggle>
       </div>
       <button class="btn primary close-sesion">Cerrar sesión</button>
     </li>
